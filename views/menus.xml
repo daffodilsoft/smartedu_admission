@@ -1,0 +1,40 @@
+<odoo>
+    <data>
+        <!--This Menu Item must have a parent and an action -->
+        <menuitem id="se_admission_root"
+                  name="Admission"/>
+
+        <!--Admission Menu-->
+        <menuitem id="se_admission_menu_admission"
+                  name="Admission"
+                  parent="se_admission_root"/>
+
+        <!--Admission configure Menu-->
+
+        <menuitem id="se_admission_submenu_admission_session"
+                  name="Admission Session"
+                  parent="se_admission_menu_admission"
+                  action="se_admission_session_action_view"/>
+
+        <menuitem id="se_admission_submenu_application"
+                  name="Application"
+                  parent="se_admission_menu_admission"
+                  action="se_application_action"/>
+
+        <!--Admission Configuration Menu-->
+        <menuitem id="se_admission_menu_configuration"
+                  name="Configuration"
+                  parent="se_admission_root"/>
+
+         <!--General Management-->
+        <menuitem id="se_admission_menu_configuration_general_management"
+                  name="General Management"
+                  parent="se_admission_menu_configuration"/>
+
+        <!--Semester Management-->
+        <menuitem id="se_admission_menu_configuration_semester_management"
+                  name="Semester Management"
+                  parent="se_admission_menu_configuration"/>
+
+    </data>
+</odoo>

@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    <data>
+
+        <!-- Form View -->
+        <record id="student_email_proposed_wizard_form_view" model="ir.ui.view">
+            <field name="name">student.email.proposed.wizard.form.view</field>
+            <field name="model">student.email.proposed.wizard</field>
+            <field name="priority" eval="7" />
+            <field name="arch" type="xml">
+                <form string="Propose Student Email Wizard Form">
+                    <group name="student" string="Student" col="4">
+                        <field name="student_name" readonly="True" context="{'student_name': student_name}"/>
+                        <field name="student_id" readonly="True" context="{'student_id': student_id}"/>
+                    </group>
+                    <h3>
+                        <label for="auto_suggest" string="Auto Suggest"/>
+                        <field name="auto_suggest"/>
+                    </h3>
+                    <group name="proposed_email" string="Propose Student Email" col="4">
+                        <field name="proposed_student_email" string="Email" required="True"/>
+                        <field name="proposed_note" string="Note"/>
+                    </group>
+                    <footer>
+                        <button type="object"
+                            class="oe_highlight"
+                            string="Confirm &amp; Propose Student Email"
+                            name="action_confirm_admission_applicant_admitted_and_propose_student_email"
+                            icon="fa-check"/>
+                        <button string="Cancel" class="oe_link" special="cancel"/>
+                    </footer>
+                </form>
+            </field>
+        </record>
+
+
+        <!-- Act Window & Menu Configuration -->
+        <record id="action_student_email_proposed_wizard_view" model="ir.actions.act_window">
+            <field name="name">Propose Student Email Wizard</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">student.email.proposed.wizard</field>
+            <field name="view_mode">form</field>
+            <field name="target">new</field>
+        </record>
+
+    </data>
+</odoo>

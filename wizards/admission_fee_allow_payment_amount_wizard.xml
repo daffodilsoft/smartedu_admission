@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    <data>
+
+        <!-- Form View -->
+        <record id="admission_fee_allow_payment_amount_wizard_form_view" model="ir.ui.view">
+            <field name="name">admission.fee.allow.payment.amount.wizard.form.view</field>
+            <field name="model">admission.fee.allow.payment.amount.wizard</field>
+            <field name="priority" eval="7" />
+            <field name="arch" type="xml">
+                <form string="Allow Payment Amount of Admission Fee Wizard Form">
+                    <group>
+                        <field name="admission_fee_allow_payment_amount" required="True"/>
+                        <field name="admission_fee_allow_payment_amount_note"/>
+                    </group>
+                    <footer>
+                        <button name="action_admission_fee_allow_payment_amount" type="object" string="Allow" icon="fa-check" class="btn btn-primary"/>
+                        <button string="Cancel" class="oe_link" special="cancel"/>
+                    </footer>
+                </form>
+            </field>
+        </record>
+
+
+        <!-- Act Window & Menu Configuration -->
+        <record id="admission_fee_allow_payment_amount_wizard_action_view" model="ir.actions.act_window">
+            <field name="name">Allow Payment Amount of Admission Fee Wizard</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">admission.fee.allow.payment.amount.wizard</field>
+            <field name="view_mode">form</field>
+            <field name="target">new</field>
+        </record>
+
+    </data>
+</odoo>

@@ -1,0 +1,143 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    <data>
+        <!--Tree View-->
+        <record id="se_admission_session_tree_view" model="ir.ui.view">
+            <field name="name">se.admission.session.tree</field>
+            <field name="model">se.admission.session</field>
+            <field name="priority" eval="8"/>
+            <field name="arch" type="xml">
+                <tree string="Admission Session">
+                    <field name="name"/>
+                    <field name="program_id"/>
+                    <field name="start_date"/>
+                    <field name="end_date"/>
+                    <field name="min_count"/>
+                    <field name="max_count"/>
+                    <field name="semester_id"/>
+                    <field name="semester_year" string="Year"/>
+<!--                    <field name="product_id" invisible="1"/>-->
+                    <field name="state"/>
+                </tree>
+            </field>
+        </record>
+
+        <!--Form View-->
+        <record id="se_admission_session_form_view" model="ir.ui.view">
+            <field name="name">se.admission.session.form</field>
+            <field name="model">se.admission.session</field>
+            <field name="priority" eval="8"/>
+            <field name="arch" type="xml">
+                <form string="Admission session">
+                    <header>
+                        <button name="confirm_session" states="draft" type="object" string="Confirm"
+                                class="oe_highlight"/>
+                        <button name="start_application" states="confirm" type="object" string="Start Application"
+                                class="oe_highlight"/>
+                        <button name="start_admission" states="application" type="object" string="Start Admission"
+                                class="oe_highlight"/>
+                        <button name="close_session" states="admission" type="object" string="Done"
+                                class="oe_highlight"/>
+                        <button name="cancel_session" states="draft,confirm" string="Cancel" type="object"/>
+                        <button name="set_to_draft" states="cancel" string="Set to Draft" type="object"/>
+                        <field name="state" widget="statusbar" statusbar_visible="draft,confirm,application,admission"/>
+                    </header>
+                    <sheet>
+                        <field name="active" invisible="1"/>
+                        <widget name="web_ribbon" title="Archived" bg_color="bg-danger"
+                                attrs="{'invisible': [('active', '=', True)]}"/>
+                        <group>
+                            <group>
+                                <field name="name"/>
+                                <field name="program_id"/>
+                                <field name="start_date"/>
+                                <field name="end_date"/>
+    <!--                            <field name="product_id" context="{'default_type': 'service'}"/>-->
+                                <field name="min_count" required="1"/>
+                                <field name="max_count" required="1"/>
+                            </group>
+                            <group>
+                                <field name="semester_id" required="True"/>
+                                <field name="semester_type" readonly="True"/>
+                                <field name="semester_year" string="Year"/>
+                            </group>
+                        </group>
+                        <group string="Applications">
+<!--                            <field name="application_ids" nolabel="1" colspan="2" readonly="1"/>-->
+                        </group>
+                    </sheet>
+                    <div class="oe_chatter">
+                        <field name="message_follower_ids" widget="mail_followers" groups="base.group_user"/>
+                        <field name="message_ids" widget="mail_thread"/>
+                    </div>
+                </form>
+            </field>
+        </record>
+
+        <!--Search View-->
+        <record id="se_admission_session_search_view" model="ir.ui.view">
+            <field name="name">se.admission.session.search</field>
+            <field name="model">se.admission.session</field>
+            <field name="priority" eval="8"/>
+            <field name="arch" type="xml">
+                <search string="Admission Session">
+                    <field name="name"/>
+                    <field name="program_id"/>
+                    <field name="semester_id" string="Semester"/>
+<!--                    <field name="product_id"/>-->
+                    <newline/>
+                    <group expand="0" string="Group By...">
+                        <filter string="program" name="group_by_adm_reg_program_id"
+                                domain="[]" context="{'group_by':'program_id'}"/>
+<!--                        <filter string="Fees" name="group_by_adm_reg_product_id"-->
+<!--                                domain="[]" context="{'group_by':'product_id'}"/>-->
+                        <filter string="Status" name="group_by_adm_reg_state"
+                                domain="[]" context="{'group_by':'state'}"/>
+                        <filter string="Archived" name="inactive" domain="[('active', '=', False)]"/>
+                    </group>
+                </search>
+            </field>
+        </record>
+
+
+
+        <!--Graph View-->
+        <record id="se_admission_session_graph_view" model="ir.ui.view">
+            <field name="name">se.admission.session.graph</field>
+            <field name="model">se.admission.session</field>
+            <field name="arch" type="xml">
+                <graph string="Program By Admission Session">
+                    <field name="program_id" type="row"/>
+                    <field name="start_date"  interval="month" />
+<!--                    <field name="product_id" type="measure"/>-->
+                </graph>
+            </field>
+        </record>
+
+        <!--Action-->
+        <record id="se_admission_session_action_view" model="ir.actions.act_window">
+            <field name="name">Admission Session</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">se.admission.session</field>
+            <field name="binding_view_types">form</field>
+            <field name="view_mode">tree,form,pivot,graph</field>
+            <field name="search_view_id" ref="se_admission_session_search_view"/>
+        </record>
+
+        <!--From View Action-->
+        <record id="se_admission_session_action_form_view" model="ir.actions.act_window.view">
+            <field name="act_window_id" ref="se_admission_session_action_view"/>
+            <field name="sequence" eval="20"/>
+            <field name="view_mode">form</field>
+            <field name="view_id" ref="se_admission_session_form_view"/>
+        </record>
+
+        <!--Tree View Action-->
+        <record id="se_admission_session_action_tree_view" model="ir.actions.act_window.view">
+            <field name="act_window_id" ref="se_admission_session_action_view"/>
+            <field name="sequence" eval="10"/>
+            <field name="view_mode">tree</field>
+            <field name="view_id" ref="se_admission_session_tree_view"/>
+        </record>
+    </data>
+</odoo>

@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    <data>
+
+        <!-- Form View -->
+        <record id="student_id_wizard_form_view" model="ir.ui.view">
+            <field name="name">student.id.wizard.form.view</field>
+            <field name="model">student.id.wizard</field>
+            <field name="priority" eval="7" />
+            <field name="arch" type="xml">
+                <form string="Student ID Wizard Form">
+                    <group>
+                        <group>
+                            <field name="generate_type" widget="radio" required="True"/>
+                        </group>
+                        <group>
+                            <div attrs="{'invisible': [('generate_type','!=','manual')]}">
+                                <label for="student_id_prefix" string="Student ID:" style="font-weight: bold;"/>
+                                <field name="student_id_prefix" readonly="1" context="{'student_id_prefix': student_id_prefix}"/>
+                                <field name="student_serial" attrs="{'required': [('generate_type','=','manual')]}"/>
+                            </div>
+                        </group>
+                    </group>
+                    <footer>
+                        <button name="generate_student_id" type="object" string="Generate" icon="fa-id-card" class="btn btn-primary"/>
+                        <button name="cancel_button_pressed" type="object" string="Cancel" class="oe_link"/>
+                    </footer>
+                </form>
+            </field>
+        </record>
+
+
+        <!-- Act Window & Menu Configuration -->
+        <record id="action_student_id_wizard_view" model="ir.actions.act_window">
+            <field name="name">Generate Student ID Wizard</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">student.id.wizard</field>
+            <field name="view_mode">form</field>
+            <field name="target">new</field>
+        </record>
+
+    </data>
+</odoo>
