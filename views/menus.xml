@@ -26,6 +26,12 @@
                   name="Configuration"
                   parent="se_admission_root"/>
 
+        <!--Program Type Menu-->
+        <menuitem id="se_admission_menu_configuration_program_type"
+                  name="Program Type"
+                  parent="se_admission_menu_configuration"
+                  action="se_program_type_action_view"/>
+
          <!--General Management-->
         <menuitem id="se_admission_menu_configuration_general_management"
                   name="General Management"

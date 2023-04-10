@@ -98,9 +98,11 @@
                                     string="Generate Student ID"
                                     name="generate_student_id_wizard"
                                     attrs="{'invisible': [('student_id_text','!=',False)]}"/>
+                            <field name="proposed_student_email" invisible="1"/>
                             <button type="object"
                                     class="oe_highlight m-1"
                                     string="Propose Student Email"
+                                    attrs="{'invisible': [('proposed_student_email','=',True)]}"
                                     name="action_admission_applicant_admitted_wizard"/>
                             <field name="is_admission_fee_allow_payment_amount" invisible="1"/>
                             <button type="object"
@@ -167,6 +169,8 @@
                                         <field name="program_id"/>
                                         <field name="curriculum_id"/>
                                         <field name="order_id"/>
+                                         <field name="admission_fee"/>
+                                        <field name="fees_term_id"/>
                                     </group>
                                     <group>
                                         <field name="student_id"/>
@@ -176,8 +180,6 @@
                                         <field name="admission_expire_date"/>
                                         <field name="batch_id"/>
                                         <field name="fees"/>
-                                        <field name="admission_fee"/>
-                                        <field name="fees_term_id"/>
                                         <field name="is_student"/>
                                     </group>
                                 </group>
@@ -209,16 +211,18 @@
                                 </h2>
                                 <group>
                                     <group>
-                                        <field name="form_type"/>
+                                        <field name="applicant_type"/>
+                                        <field name="program_type_id"/>
+                                        <field name="last_completed_degree"/>
                                         <field name="student_type_id"/>
                                         <field name="education_shift_id"/>
-                                        <!--                                        <field name="campus_id"/>-->
                                     </group>
                                     <group>
                                         <field name="form_apply_type"/>
                                         <field name="admission_type"/>
                                         <field name="academic_medium_type"/>
                                         <field name="campus_type"/>
+                                        <field name="campus_id"/>
                                     </group>
                                 </group>
                                 <h2 class='text-primary' style="margin-top: 20px;">Eligibility

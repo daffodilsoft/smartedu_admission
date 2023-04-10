@@ -12,6 +12,8 @@
     'version': '16.0.1',
 
     'depends': [
+        'base',
+        'mail',
         'smartedu_core',
     ],
 
@@ -21,10 +23,17 @@
         # security
         # 'security/ir.model.access.csv',
 
+        # mail templates
+        'data/admission_confirm_mail_template.xml',
+        'data/applicant_mail_template.xml',
+        # 'data/applicant_mail_template_old.xml',
+        'data/official_email_generation_mail_template.xml',
+
         # views
         'views/se_admission_session_view.xml',
         'views/se_batch_view.xml',
         'views/se_application_views.xml',
+        'views/se_program_type.xml',
 
         # Wizards
         'wizards/student_email_proposed_wizard.xml',

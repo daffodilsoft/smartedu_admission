@@ -1,0 +1,45 @@
+<odoo>
+    <data>
+
+            <!--Form View-->
+        <record id="se_program_type_form_view" model="ir.ui.view">
+            <field name="name">se_program_type_view_form</field>
+            <field name="model">se.program.type</field>
+            <field name="arch" type="xml">
+                <form>
+                    <sheet>
+                        <group>
+                            <field name="name"/>
+                            <field name="code"/>
+                            <field name="active"/>
+                            <field name="note"/>
+                        </group>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+
+            <!--Tree View-->
+        <record id="se_program_type_tree_view" model="ir.ui.view">
+            <field name="name">_view_tree</field>
+            <field name="model">se.program.type</field>
+            <field name="arch" type="xml">
+                <tree>
+                    <field name="name"/>
+                    <field name="code"/>
+                    <field name="active"/>
+                    <field name="note"/>
+                </tree>
+            </field>
+        </record>
+
+            <!--Action View-->
+        <record id="se_program_type_action_view" model="ir.actions.act_window">
+            <field name="name">Program Type</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">se.program.type</field>
+            <field name="view_mode">tree,form</field>
+            <field name="view_id" ref="se_program_type_form_view"/>
+        </record>
+    </data>
+</odoo>
