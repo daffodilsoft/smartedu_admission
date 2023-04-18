@@ -170,7 +170,7 @@
                                         <field name="curriculum_id"/>
                                         <field name="order_id"/>
                                          <field name="admission_fee"/>
-                                        <field name="fees_term_id"/>
+                                        <field name="fees"/>
                                     </group>
                                     <group>
                                         <field name="student_id"/>
