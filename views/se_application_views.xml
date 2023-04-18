@@ -86,7 +86,7 @@
                                     class="oe_highlight m-1"
                                     string="Generate Admission Fee"
                                     name="create_invoice_admission_application_admission_fee"
-                                    attrs="{'invisible': [('is_admission_fee_generated','=',True)]}"/>
+                                    attrs="{'invisible': [('account_move_id','=',True)]}"/>
                             <field name="is_admission_applicant_admitted" invisible="1"/>
                             <button type="object"
                                     class="oe_highlight m-1"
@@ -102,8 +102,8 @@
                             <button type="object"
                                     class="oe_highlight m-1"
                                     string="Propose Student Email"
-                                    attrs="{'invisible': [('proposed_student_email','=',True)]}"
-                                    name="action_admission_applicant_admitted_wizard"/>
+                                    name="action_admission_applicant_admitted_wizard"
+                                    attrs="{'invisible': [('proposed_student_email','!=',False)]}"/>
                             <field name="is_admission_fee_allow_payment_amount" invisible="1"/>
                             <button type="object"
                                     class="oe_highlight m-1"
@@ -174,12 +174,13 @@
                                     </group>
                                     <group>
                                         <field name="student_id"/>
+                                        <field name="user_id"/>
                                         <field name="student_id_text"/>
                                         <field name="application_serial_number"/>
                                         <field name="application_date"/>
                                         <field name="admission_expire_date"/>
                                         <field name="batch_id"/>
-                                        <field name="fees"/>
+                                        <field name="lst_price" string="Application Fee" readonly="True"/>
                                         <field name="is_student"/>
                                     </group>
                                 </group>
@@ -765,10 +766,11 @@
                                 </h3>
                                 <group string="Admission Form Fee">
                                     <group>
-                                        <field name="account_move_id"/>
-                                        <field name="invoice_amount_total_string"/>
-                                        <field name="invoice_amount_paid_string"/>
-                                        <field name="invoice_amount_residual_string"/>
+<!--                                        <field name="account_move_id"/>-->
+                                        <field name="product_id" string="Admission Form Fee"/>
+                                        <field name="lst_price" readonly="True"/>
+                                        <field name="invoice_amount_paid" attrs="{'required': [('lst_price','=',True)]}"/>
+                                        <field name="invoice_amount_due"/>
                                     </group>
                                     <group>
                                         <field name="invoice_payment_state"/>
@@ -778,7 +780,7 @@
                                 </group>
                                 <group string="Admission  Fee">
                                     <group>
-                                        <field name="admission_fee_account_move_id"/>
+                                        <field name="account_move_id"/>
                                         <field name="admission_fee_invoice_amount_total_string"/>
                                         <field name="admission_fee_invoice_amount_paid_string"/>
                                         <field name="admission_fee_invoice_amount_residual_string"/>
