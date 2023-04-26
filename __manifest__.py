@@ -32,13 +32,13 @@
         # views
         'views/se_admission_session_view.xml',
         'views/se_batch_view.xml',
-        'views/se_application_views.xml',
+        'views/se_application_view.xml',
         'views/se_program_type.xml',
 
         # Wizards
         'wizards/student_email_proposed_wizard.xml',
         'wizards/admission_fee_allow_payment_amount_wizard.xml',
-        'wizards/student_id_wizard.xml',
+        'wizards/payment_collection_wizard.xml',
 
         # menus
         'views/menus.xml',

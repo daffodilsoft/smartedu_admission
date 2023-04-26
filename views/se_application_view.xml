@@ -3,7 +3,7 @@
         <!-- Tree view -->
 
         <record id="se_application_tree_view" model="ir.ui.view">
-            <field name="name">view.model.tree</field>
+            <field name="name">se.application.tree</field>
             <field name="model">se.application</field>
             <field name="mode">primary</field>
             <field name="priority" eval="16"/>
@@ -24,7 +24,7 @@
         <!-- Form view -->
 
         <record id="se_application_form_view" model="ir.ui.view">
-            <field name="name">view.model.form</field>
+            <field name="name">se.application.form</field>
             <field name="model">se.application</field>
             <field name="type">form</field>
             <field name="mode">primary</field>
@@ -166,6 +166,7 @@
                                         <field name="session_id" widget="selection"/>
                                         <field name="application_number"/>
                                         <field name="admission_date"/>
+                                        <field name="student_serial"/>
                                         <field name="program_id"/>
                                         <field name="curriculum_id"/>
                                         <field name="order_id"/>
@@ -771,6 +772,10 @@
                                         <field name="lst_price" readonly="True"/>
                                         <field name="invoice_amount_paid" attrs="{'required': [('lst_price','=',True)]}"/>
                                         <field name="invoice_amount_due"/>
+                                        <button string="Make Payment"
+                                                class="oe_highlight"
+                                                type="object"
+                                                name="make_payment"/>
                                     </group>
                                     <group>
                                         <field name="invoice_payment_state"/>

@@ -17,7 +17,7 @@
                             <div attrs="{'invisible': [('generate_type','!=','manual')]}">
                                 <label for="student_id_prefix" string="Student ID:" style="font-weight: bold;"/>
                                 <field name="student_id_prefix" readonly="1" context="{'student_id_prefix': student_id_prefix}"/>
-                                <field name="student_serial" attrs="{'required': [('generate_type','=','manual')]}"/>
+                                <field name="student_serial"/>
                             </div>
                         </group>
                     </group>
