@@ -38,7 +38,7 @@
         # Wizards
         'wizards/student_email_proposed_wizard.xml',
         'wizards/admission_fee_allow_payment_amount_wizard.xml',
-        'wizards/payment_collection_wizard.xml',
+        'wizards/student_id_wizard.xml',
 
         # menus
         'views/menus.xml',
