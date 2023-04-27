@@ -30,6 +30,7 @@
         'data/official_email_generation_mail_template.xml',
 
         # views
+        'views/se_admission_form_template.xml',
         'views/se_admission_session_view.xml',
         'views/se_batch_view.xml',
         'views/se_application_view.xml',
@@ -45,7 +46,7 @@
     ],
     # only loaded in demonstration mode
     'demo': [
-        'demo/demo.xml',
+        # 'demo/demo.xml',
     ],
     'installable': True,
     'auto_install': False,
