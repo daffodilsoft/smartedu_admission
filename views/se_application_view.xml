@@ -97,7 +97,7 @@
                                     class="oe_highlight m-1"
                                     string="Generate Student ID"
                                     name="generate_student_id_wizard"
-                                    attrs="{'invisible': [('student_id_text','!=',False)]}"/>
+                                    attrs="{'invisible': [('student_id_string','!=',False)]}"/>
                             <field name="proposed_student_email" invisible="1"/>
                             <button type="object"
                                     class="oe_highlight m-1"
@@ -176,7 +176,7 @@
                                     <group>
                                         <field name="student_id"/>
                                         <field name="user_id"/>
-                                        <field name="student_id_text"/>
+                                        <field name="student_id_string"/>
                                         <field name="application_serial_number"/>
                                         <field name="application_date"/>
                                         <field name="admission_expire_date"/>
