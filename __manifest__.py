@@ -32,7 +32,6 @@
         # views
         'views/se_admission_form_template.xml',
         'views/se_admission_session_view.xml',
-        'views/se_batch_view.xml',
         'views/se_application_view.xml',
         'views/se_program_type.xml',
 

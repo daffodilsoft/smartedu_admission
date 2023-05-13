@@ -9,7 +9,7 @@
                   name="Admission"
                   parent="se_admission_root"/>
 
-        <!--Admission configure Menu-->
+        <!--Admission Menu-->
 
         <menuitem id="se_admission_submenu_admission_session"
                   name="Admission Session"
