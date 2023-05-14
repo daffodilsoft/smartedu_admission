@@ -80,4 +80,7 @@ function applicant_type_click() {
 //         preview_profile_picture_modal.appendChild(modal_picture);
 
 //     }
-// });
+// });file
+
+
+

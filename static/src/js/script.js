@@ -139,3 +139,19 @@ function changeSelect2() {
   }
 }
 
+
+// function handleProfileUpload(event) {
+//   const file = event.target.files[0];
+
+//   const reader = new FileReader();
+//   reader.readAsDataURL(file);
+//   reader.onload = () => {
+//     const imageDataUrl = reader.result;
+
+//     const image = document.createElement('img');
+//     image.src = imageDataUrl;
+
+//     const imageContainer = document.querySelector('#preview_profile_picture');
+//     imageContainer.appendChild(image);
+//   };
+// }
