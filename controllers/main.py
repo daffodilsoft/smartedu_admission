@@ -5,19 +5,18 @@ from odoo.http import request
 class applications(http.Controller):
     @http.route('/see_application', type='http', auth='public', website=True)
     def app_form(self, **kw):
-        
+
         students = request.env['se.application'].sudo().search([])
         return request.render('smartedu_admission.applications_page', {
             'students': students
         })
-        
+
     # Redirect To  the Page
     @http.route('/student_form', auth='public', website=True)
     def hospital_patient_redirect(self, **kw):
         first_name = kw.get('first_name')
         middle_name = kw.get('middle_name')
         last_name = kw.get('last_name')
-        email = kw.get('email')
         # application_number= kw.get('application_number')
         # admission_date= kw.get('admission_date')
         # application_date= kw.get('application_date')
@@ -100,7 +99,10 @@ class applications(http.Controller):
         # applicant_type=kw.get('applicant_type')
         # # program_type_id=kw.get('program_type_id')
         # last_completed_degree=kw.get('last_completed_degree')
-        
+
+
+
+
         request.env['se.application'].sudo().create({
             'first_name': first_name,
             'middle_name': middle_name,
@@ -116,7 +118,7 @@ class applications(http.Controller):
             # 'religion': religion,
             # 'marital_status':marital_status,
             # 'blood_group':blood_group,
-            'email': email,
+            # 'email':email,
             # 'national_id_no':national_id_no,
             # # 'nationality':nationality,
             # 'passport_no':passport_no,
@@ -183,12 +185,12 @@ class applications(http.Controller):
             # 'passport_expire_date':passport_expire_date,
             # 'visa_no':visa_no,
             # 'visa_expire_date': visa_expire_date,
-            # # 'program_id': program_ids,         
+            # # 'program_id': program_ids,
             # 'applicant_type':applicant_type,
             # # 'program_type_id':program_type_id,
             # 'last_completed_degree':last_completed_degree,
-            
-            
+
+
         })
         redirect = '/see_application'
         return request.redirect(redirect)
@@ -196,14 +198,10 @@ class applications(http.Controller):
     @http.route('/application', auth='public', website=True)
     def hospital_patient_new(self, **kw):
             student = request.env['se.application'].sudo().search([])
-            program = request.env['se.program'].sudo().search([]) 
-            shift = request.env['se.education.shift'].sudo().search([]) 
+            program = request.env['se.program'].sudo().search([])
+            shift = request.env['se.education.shift'].sudo().search([])
             return request.render('smartedu_admission.application_form', {
                 'student': student,
                 'program': program,
                 'shift': shift,
         })
-        
-
-
-
