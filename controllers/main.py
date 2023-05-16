@@ -17,7 +17,6 @@ class applications(http.Controller):
         first_name = kw.get('first_name')
         middle_name = kw.get('middle_name')
         last_name = kw.get('last_name')
-<<<<<<< HEAD
         # application_number= kw.get('application_number')
         # admission_date= kw.get('admission_date')
         # application_date= kw.get('application_date')
@@ -100,11 +99,6 @@ class applications(http.Controller):
         # applicant_type=kw.get('applicant_type')
         # # program_type_id=kw.get('program_type_id')
         # last_completed_degree=kw.get('last_completed_degree')
-
-
-
-
-=======
         email = kw.get('email')
         application_number= kw.get('application_number')
         admission_date= kw.get('admission_date')
@@ -188,13 +182,10 @@ class applications(http.Controller):
         applicant_type=kw.get('applicant_type')
         # program_type_id=kw.get('program_type_id')
         last_completed_degree=kw.get('last_completed_degree')
-        
->>>>>>> 2fd5b7bd82039d51ce33da1d134d3749d77ee3d8
         request.env['se.application'].sudo().create({
             'first_name': first_name,
             'middle_name': middle_name,
             'last_name': last_name,
-<<<<<<< HEAD
             # 'application_number':application_number,
             # 'admission_date':admission_date,
             # 'application_date':application_date,
@@ -277,9 +268,6 @@ class applications(http.Controller):
             # 'applicant_type':applicant_type,
             # # 'program_type_id':program_type_id,
             # 'last_completed_degree':last_completed_degree,
-
-
-=======
             'email': email,
             'application_number':application_number,
             'admission_date':admission_date,
@@ -363,9 +351,7 @@ class applications(http.Controller):
             'applicant_type':applicant_type,
             # 'program_type_id':program_type_id,
             'last_completed_degree':last_completed_degree,
-            
-            
->>>>>>> 2fd5b7bd82039d51ce33da1d134d3749d77ee3d8
+
         })
         redirect = '/see_application'
         return request.redirect(redirect)
