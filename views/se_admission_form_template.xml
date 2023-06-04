@@ -1,7 +1,5 @@
 <odoo>
-		
-		
-		<!-- menu -->
+	<!-- menu -->
 	<record id="menu_admission_extension" model="website.menu">
 		<field name="name">
 			Online Admission Form
@@ -9,15 +7,13 @@
 		<field name="url">
 			/application
 		</field>
-		<field name="parent_id" ref="website.main_menu"/>
+		<field name="parent_id" ref="website.main_menu" />
 		<field name="sequence">
 			55
 		</field>
 	</record>
 	<data>
-
-
-	<!-- template for submission message  -->
+		<!-- template for submission message -->
 		<template id="applications_page" name="Applicant  Registration  Form">
 			<t t-call="website.layout">
 				<div class="container">
@@ -27,19 +23,21 @@
 				</div>
 			</t>
 		</template>
-		
-		
-		<!-- post methood for the registration form-->
+		<!-- post methood for the registration form -->
 		<template id="application_form" name="application">
 			<t t-call="website.layout">
-				<link rel="stylesheet" href="smartedu_admission/static/src/css/style.css"/>
-				<script src="smartedu_admission/static/src/js/script.js"></script>
-				<script src="smartedu_admission/static/src/js/script2.js"></script>
-				<script src="smartedu_admission/static/src/js/script3.js"></script>
-				<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+				<link rel="stylesheet" href="smartedu_admission/static/src/css/style.css" />
+				<script src="smartedu_admission/static/src/js/script.js">
+				</script>
+				<script src="smartedu_admission/static/src/js/script2.js">
+				</script>
+				<script src="smartedu_admission/static/src/js/script3.js">
+				</script>
+				<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js">
+				</script>
 				<body>
 					<form action="/student_form" method="post">
-						<input type="hidden" name="csrf_token" t-att-value="request.csrf_token()"/>
+						<input type="hidden" name="csrf_token" t-att-value="request.csrf_token()" />
 						<div class="main_container py-5">
 							<div class="col">
 								<div id="step1" style="
@@ -146,18 +144,21 @@
 									</h6>
 								</div>
 							</div>
-						</div><!-- Section 1 -->
+						</div>
+						<!-- Section 1 -->
 						<section id="section1" style="display: block">
 							<div class="container">
 								<h3 class="mb-3 text-center">
 									Apply Information
 								</h3>
-								<hr/>
+								<hr />
 								<div class="row m-5">
 									<div class="col-4">
 										<p>
 											Applicant Type
-											<span class="mandatory-field"></span>
+											<span class="text-danger">
+												*
+											</span>
 										</p>
 										<select id="applicant_type_id" name="applicant_type" class="form-select" onchange="applicant_type_click()">
 											<option value="">
@@ -170,21 +171,26 @@
 												International Student
 											</option>
 										</select>
-										<span class="text-danger" id=""/>
+										<span class="text-danger" id="applicant_type_error">
+										</span>
 									</div>
 									<div class="col-4">
 										<p>
-											Program Type <span class="text-danger">*</span>
+											Program Type
+											<span class="text-danger">
+												*
+											</span>
 										</p>
 										<select id="program_type_id" name="program_type_id" class="form-select" onchange="Program_type_click()">
 											<option value="">
 												Select Program Type
 											</option>
 											<t t-foreach="student" t-as="student">
-												<option t-esc="student.program_type_id.name" t-att-value="student.id"/>
+												<option t-esc="student.program_type_id.name" t-att-value="student.id" />
 											</t>
 										</select>
-										<span class="text-danger" id="program_type_error"></span>
+										<span class="text-danger" id="program_type_error">
+										</span>
 									</div>
 									<div class="col-4 d-none" id="vanish_field">
 										<p>
@@ -204,17 +210,22 @@
 												Diploma
 											</option>
 										</select>
-										<span class="text-danger" id=""></span>
+										<span class="text-danger" id="">
+										</span>
 									</div>
 								</div>
 								<div class="row m-5">
 									<div class="col">
 										<div>
 											<p>
-												Application Number <span class="text-danger">*</span>
+												Application Number
+												<span class="text-danger">
+													*
+												</span>
 											</p>
-											<input type="text" name="application_number" id="application_numb" class="form-control" placeholder="Application Number"/>
-											<span class="text-danger" id="application_numb_error"></span>
+											<input type="text" name="application_number" id="application_numb" class="form-control" placeholder="Application Number" />
+											<span class="text-danger" id="application_numb_error">
+											</span>
 										</div>
 									</div>
 									<div class="col">
@@ -222,7 +233,7 @@
 											<p>
 												Admission Date
 											</p>
-											<input type="date" name="admission_date" class="form-control" placeholder="Admission Date"/>
+											<input type="date" name="admission_date" class="form-control" placeholder="Admission Date" />
 										</div>
 									</div>
 									<div class="col">
@@ -230,28 +241,32 @@
 											<p>
 												Application Date
 											</p>
-											<input type="date" name="application_date" class="form-control" placeholder="Application Date"/>
+											<input type="date" name="application_date" class="form-control" placeholder="Application Date" />
 										</div>
 									</div>
 								</div>
 								<h3 class="mb-5 mt-5 text-center ">
 									General Information
 								</h3>
-								<hr/>
+								<hr />
 								<div class="row m-5">
 									<div class="col">
 										<p>
-											Program  <span class="text-danger">*</span>
+											Program
+											<span class="text-danger">
+												*
+											</span>
 										</p>
 										<select id="program_id" name="program_id" class="form-select">
 											<option value="">
 												Select Program
 											</option>
 											<t t-foreach="program" t-as="pro">
-												<option t-esc="pro.name" t-att-value="pro.id"/>
+												<option t-esc="pro.name" t-att-value="pro.id" />
 											</t>
 										</select>
-										<span class="text-danger" id="program_error"></span>
+										<span class="text-danger" id="program_error">
+										</span>
 									</div>
 									<div class="col">
 										<p>
@@ -278,7 +293,7 @@
 												Select Education Shift
 											</option>
 											<t t-foreach="shift" t-as="shift">
-												<option t-esc="shift.name" t-att-value="shift.id"/>
+												<option t-esc="shift.name" t-att-value="shift.id" />
 											</t>
 										</select>
 									</div>
@@ -321,8 +336,6 @@
 								</div>
 							</div>
 						</section>
-
-
 						<!-- Section 2 -->
 						<section id="section2">
 							<div class="container p-3   bg-light">
@@ -330,15 +343,18 @@
 									<h3>
 										Applicant
 									</h3>
-									<hr/>
+									<hr />
 									<div class="row m-5">
 										<div class="col">
 											<div>
 												<p>
-													First Name <span class="text-danger">*</span>
+													First Name
+													<span class="text-danger">
+														*
+													</span>
 												</p>
-												<input type="text" name="first_name" id="member_first_name" class="form-control" placeholder="First Name"/>
-												<span class="text-danger" id="member_first_name_error"/>
+												<input type="text" name="first_name" id="member_first_name" class="form-control" placeholder="First Name" />
+												<span class="text-danger" id="member_first_name_error" />
 											</div>
 										</div>
 										<div class="col">
@@ -346,16 +362,19 @@
 												<p>
 													Middle Name
 												</p>
-												<input type="text" name="middle_name" class="form-control" placeholder="Middle Name"/>
+												<input type="text" name="middle_name" class="form-control" placeholder="Middle Name" />
 											</div>
 										</div>
 										<div class="col">
 											<div>
 												<p>
-													Last Name<span class="text-danger">*</span>
+													Last Name
+													<span class="text-danger">
+														*
+													</span>
 												</p>
-												<input type="text" name="last_name" id="member_last_name" class="form-control" placeholder="Last Name"/>
-												<span class="text-danger" id="last_name_error"/>
+												<input type="text" name="last_name" id="member_last_name" class="form-control" placeholder="Last Name" />
+												<span class="text-danger" id="last_name_error" />
 											</div>
 										</div>
 									</div>
@@ -383,7 +402,7 @@
 											<p>
 												Date of Birth
 											</p>
-											<input type="date" name="birth_date" class="form-control" placeholder="Date of Birth"/>
+											<input type="date" name="birth_date" class="form-control" placeholder="Date of Birth" />
 										</div>
 										<div class="col">
 											<p>
@@ -471,10 +490,13 @@
 										</div>
 										<div class="col">
 											<p>
-												Email<span class="text-danger">*</span>
+												Email
+												<span class="text-danger">
+													*
+												</span>
 											</p>
-											<input type="text" name="email" class="form-control" id="email" placeholder="EX.abc@gmail.com"/>
-											<span class="text-danger" id="member_email_error"/>
+											<input type="text" name="email" class="form-control" id="email" placeholder="EX.abc@gmail.com" />
+											<span class="text-danger" id="member_email_error" />
 										</div>
 									</div>
 									<div class="row m-5">
@@ -482,19 +504,19 @@
 											<p>
 												Mobile No
 											</p>
-											<input type="text" name="mobile" class="form-control" placeholder="EX. +8801794784733"/>
+											<input type="text" name="mobile" class="form-control" placeholder="EX. +8801794784733" />
 										</div>
 										<div class="col">
 											<p>
 												National ID / Birth Certificate No.
 											</p>
-											<input type="text" name="national_id_no" class="form-control" placeholder="EX.56794784733"/>
+											<input type="text" name="national_id_no" class="form-control" placeholder="EX.56794784733" />
 										</div>
 										<div class="col">
 											<p>
 												Passport No
 											</p>
-											<input type="text" name="passport_no" class="form-control" placeholder="EX.BN1234567"/>
+											<input type="text" name="passport_no" class="form-control" placeholder="EX.BN1234567" />
 										</div>
 									</div>
 									<div class="row m-5">
@@ -502,19 +524,19 @@
 											<p>
 												Nationality
 											</p>
-											<input type="text" name="nationality" class="form-control" placeholder="Nationality"/>
+											<input type="text" name="nationality" class="form-control" placeholder="Nationality" />
 										</div>
 										<div class="col">
 											<p>
 												Country
 											</p>
-											<input type="text" name="national_country_id" class="form-control" placeholder="Country"/>
+											<input type="text" name="national_country_id" class="form-control" placeholder="Country" />
 										</div>
 										<div class="col">
 											<p>
 												Social Network ID
 											</p>
-											<input type="text" name="social_network" class="form-control" placeholder="Social Network ID"/>
+											<input type="text" name="social_network" class="form-control" placeholder="Social Network ID" />
 										</div>
 									</div>
 									<div class="row m-5">
@@ -522,25 +544,25 @@
 											<p>
 												Emergency Contact
 											</p>
-											<input type="text" name="emergency_contact_info" class="form-control" placeholder="Emergency Contact"/>
+											<input type="text" name="emergency_contact_info" class="form-control" placeholder="Emergency Contact" />
 										</div>
 										<div class="col d-none field_show" id="">
 											<p>
 												Passport expire date
 											</p>
-											<input type="date" name="passport_expire_date" class="form-control" placeholder="Passport expire date"/>
+											<input type="date" name="passport_expire_date" class="form-control" placeholder="Passport expire date" />
 										</div>
 										<div class="col d-none field_show" id="">
 											<p>
 												Visa No*
 											</p>
-											<input type="text" name="visa_no" class="form-control" placeholder="Visa No"/>
+											<input type="text" name="visa_no" class="form-control" placeholder="Visa No" />
 										</div>
 										<div class="col d-none field_show" id="">
 											<p>
 												Visa expire date
 											</p>
-											<input type="date" name="visa_expire_date" class="form-control" placeholder="Visa expire date"/>
+											<input type="date" name="visa_expire_date" class="form-control" placeholder="Visa expire date" />
 										</div>
 									</div>
 									<div class="row " id="">
@@ -548,11 +570,12 @@
 											<label for="profile_picture">
 												Upload Passport
 											</label>
-											<input type="file" name="passport" class="form-control" placeholder="Upload Applicant Passport"/>
+											<input type="file" name="passport" class="form-control" placeholder="Upload Applicant Passport" />
 											<div class="form-group">
-												<br/>
-												<div class="custom_picture_box" id="preview_passport"></div>
-												<br/>
+												<br />
+												<div class="custom_picture_box" id="preview_passport">
+												</div>
+												<br />
 												<strong>
 													File must be in Passport Size and jpg/jpeg/png format. File size not more then 1 MB
 												</strong>
@@ -562,12 +585,13 @@
 											<label for="profile_picture">
 												Upload Applicant Photo (Recent and Formal)
 											</label>
-											<input type="file" name="profile_picture" class="form-control" id="profile_picture"/>
-											<br/>
+											<input type="file" name="profile_picture" class="form-control" id="profile_picture" />
+											<br />
 											<div class="form-group">
-												<div class="custom_picture_box" id="preview_profile_picture"></div>
+												<div class="custom_picture_box" id="preview_profile_picture">
+												</div>
 											</div>
-											<br/>
+											<br />
 											<div>
 												<strong class="custom-file-note">
 													File must be in Passport Size and jpg/jpeg/png format. File size not more then 1 MB
@@ -578,12 +602,13 @@
 											<label for="signature">
 												Upload Applicant Signature
 											</label>
-											<input type="file" name="signature" class="form-control " id="signature"/>
-											<br/>
+											<input type="file" name="signature" class="form-control " id="signature" />
+											<br />
 											<div class="form-group">
-												<div class="custom_picture_box" id="preview_signature"></div>
+												<div class="custom_picture_box" id="preview_signature">
+												</div>
 											</div>
-											<br/>
+											<br />
 											<div>
 												<strong class="custom-file-note">
 													File must be in Passport Size and jpg/jpeg/png format. File size not more then 1 MB
@@ -592,20 +617,20 @@
 										</div>
 									</div>
 								</div>
-								<br/>
-								<br/>
+								<br />
+								<br />
 								<div>
 									<h3>
 										Address
 									</h3>
-									<hr/>
+									<hr />
 									<div class="row mt-5">
 										<div class="col mx-3">
 											<h4>
 												Permanent Address
 											</h4>
-											<br/>
-											<br/>
+											<br />
+											<br />
 											<div class="row ">
 												<lebel>
 													Country
@@ -628,7 +653,7 @@
 													</option>
 												</select>
 											</div>
-											<br/>
+											<br />
 											<div class="row">
 												<lebel>
 													State/Division
@@ -651,7 +676,7 @@
 													</option>
 												</select>
 											</div>
-											<br/>
+											<br />
 											<div class="row d-none field_show2">
 												<lebel>
 													District
@@ -674,7 +699,7 @@
 													</option>
 												</select>
 											</div>
-											<br/>
+											<br />
 											<div class="row d-none field_show2">
 												<lebel>
 													Police Station/Thana
@@ -697,44 +722,44 @@
 													</option>
 												</select>
 											</div>
-											<br/>
+											<br />
 											<div class="row">
 												<lebel>
 													City
 												</lebel>
-												<input type="text" name="" id="Permanent-city" placeholder="***"/>
+												<input type="text" name="" id="Permanent-city" placeholder="***" />
 											</div>
-											<br/>
+											<br />
 											<div class="row">
 												<lebel>
 													Zip Code/Post Code/Post Office Name
 												</lebel>
-												<input type="text" name="" id="permanent-zip" placeholder="***"/>
+												<input type="text" name="" id="permanent-zip" placeholder="***" />
 											</div>
-											<br/>
+											<br />
 											<div class="row">
 												<lebel>
 													Flat/Apt/ Street/ House No./ Area/ Village*
 												</lebel>
-												<input type="text" name="" id="permanent-street1" placeholder="Street"/>
+												<input type="text" name="" id="permanent-street1" placeholder="Street" />
 											</div>
-											<br/>
+											<br />
 											<div class="row">
-												<input type="text" name="" id="permanent-street2" placeholder="Street2"/>
+												<input type="text" name="" id="permanent-street2" placeholder="Street2" />
 											</div>
-											<br/>
+											<br />
 										</div>
 										<div class="col mx-3 ">
 											<h4>
 												Present Address
 											</h4>
-											<input type="checkbox" name="" id="permanent_address" onclick="changeSelect2()"/>
+											<input type="checkbox" name="" id="permanent_address" onclick="changeSelect2()" />
 											<label>
 												Same as Permanent
 												Address
 											</label>
-											<br/>
-											<br/>
+											<br />
+											<br />
 											<div class="row ">
 												<lebel>
 													Country*
@@ -757,7 +782,7 @@
 													</option>
 												</select>
 											</div>
-											<br/>
+											<br />
 											<div class="row">
 												<lebel>
 													State/Division
@@ -780,7 +805,7 @@
 													</option>
 												</select>
 											</div>
-											<br/>
+											<br />
 											<div class="row d-none field_show2">
 												<lebel>
 													District
@@ -803,7 +828,7 @@
 													</option>
 												</select>
 											</div>
-											<br/>
+											<br />
 											<div class="row d-none field_show2">
 												<lebel>
 													Police Station/Thana
@@ -826,37 +851,37 @@
 													</option>
 												</select>
 											</div>
-											<br/>
+											<br />
 											<div class="row">
 												<lebel>
 													City
 												</lebel>
-												<input type="text" name="" id="present-city" placeholder="***"/>
+												<input type="text" name="" id="present-city" placeholder="***" />
 											</div>
-											<br/>
+											<br />
 											<div class="row">
 												<lebel>
 													Zip Code/Post Code/Post Office Name
 												</lebel>
-												<input type="text" name="" id="present-zip" placeholder="***"/>
+												<input type="text" name="" id="present-zip" placeholder="***" />
 											</div>
-											<br/>
+											<br />
 											<div class="row">
 												<lebel>
 													Flat/Apt/ Street/ House No./ Area/ Village
 												</lebel>
-												<input type="text" name="" id="present-street1" placeholder="Street"/>
+												<input type="text" name="" id="present-street1" placeholder="Street" />
 											</div>
-											<br/>
+											<br />
 											<div class="row">
-												<input type="text" name="" id="present-street2" placeholder="Street2"/>
+												<input type="text" name="" id="present-street2" placeholder="Street2" />
 											</div>
-											<br/>
+											<br />
 										</div>
 									</div>
 								</div>
-								<br/>
-								<br/>
+								<br />
+								<br />
 								<lebel>
 									By Post Mailing Address
 								</lebel>
@@ -865,15 +890,15 @@
 										Select
 									</option>
 								</select>
-								<br/>
-								<br/>
+								<br />
+								<br />
 								<strong>
 									Star (*) marked are mandatory fields.
 								</strong>
 								<strong>
 									You have to finish the submission process of the online admission form eithin one hour.
 								</strong>
-								<br/>
+								<br />
 								<button type="button" class="btn btn-outline-danger my-5  " onclick="prevSection()">
 									Previous
 								</button>
@@ -882,14 +907,13 @@
 								</button>
 							</div>
 						</section>
-						
 						<!-- Section3 -->
 						<section id="section3">
 							<div class="container-fluid p-3 bg-light">
 								<h2 class="text-center">
 									Family Information
 								</h2>
-								<hr/>
+								<hr />
 								<div class="row ">
 									<div class="col m-5 bg-white p-3">
 										<div class="row">
@@ -897,76 +921,76 @@
 												<lebel>
 													Father&apos;s Name*
 												</lebel>
-												<input type="text" name="father_name" class="form-control" placeholder="Father&apos;s Name"/>
+												<input type="text" name="father_name" class="form-control" placeholder="Father&apos;s Name" />
 											</div>
 											<div class="col">
 												<p>
 													Mobile No.*
 												</p>
-												<input type="text" name="father_contact_number" class="form-control" placeholder="Father&apos;sMobile No.* "/>
+												<input type="text" name="father_contact_number" class="form-control" placeholder="Father&apos;sMobile No.* " />
 											</div>
 										</div>
-										<br/>
+										<br />
 										<div class="row">
 											<div class="col">
 												<p>
 													Email*
 												</p>
-												<input type="text" name="father_email" class="form-control" placeholder="Father&apos;s Email"/>
+												<input type="text" name="father_email" class="form-control" placeholder="Father&apos;s Email" />
 											</div>
 											<div class="col">
 												<p>
 													National Id*
 												</p>
-												<input type="text" name="father_national_id" class="form-control" placeholder="Father&apos;s NID* "/>
+												<input type="text" name="father_national_id" class="form-control" placeholder="Father&apos;s NID* " />
 											</div>
 											<div class="col">
 												<p>
 													Pasport No.*
 												</p>
-												<input type="text" name="father_passport" class="form-control" placeholder="Father&apos;s Pasport No.* "/>
+												<input type="text" name="father_passport" class="form-control" placeholder="Father&apos;s Pasport No.* " />
 											</div>
 										</div>
-										<br/>
+										<br />
 										<div class="row">
 											<div class="col">
 												<p>
 													Date Of Birth*
 												</p>
-												<input type="date" name="father_birthday" class="form-control"/>
+												<input type="date" name="father_birthday" class="form-control" />
 											</div>
 											<div class="col">
 												<p>
 													Age*
 												</p>
-												<input type="text" name="father_age" class="form-control" placeholder="Father&apos;s Age* "/>
+												<input type="text" name="father_age" class="form-control" placeholder="Father&apos;s Age* " />
 											</div>
 											<div class="col">
 												<p>
 													Occupation*
 												</p>
-												<input type="text" name="father_occupation" class="form-control" placeholder="Father&apos;s Occupation* "/>
+												<input type="text" name="father_occupation" class="form-control" placeholder="Father&apos;s Occupation* " />
 											</div>
 										</div>
-										<br/>
+										<br />
 										<div class="row">
 											<div class="col">
 												<p>
 													Name Of Company*
 												</p>
-												<input type="text" name="father_company" class="form-control" placeholder="Father&apos;s Name Of Company"/>
+												<input type="text" name="father_company" class="form-control" placeholder="Father&apos;s Name Of Company" />
 											</div>
 											<div class="col">
 												<p>
 													Designation*
 												</p>
-												<input type="text" name="father_designation" class="form-control" placeholder="Father&apos;s Designation* "/>
+												<input type="text" name="father_designation" class="form-control" placeholder="Father&apos;s Designation* " />
 											</div>
 											<div class="col">
 												<p>
 													Annual Income*
 												</p>
-												<input type="text" name="father_annual_income" class="form-control" placeholder="Father&apos;s Annual Income* "/>
+												<input type="text" name="father_annual_income" class="form-control" placeholder="Father&apos;s Annual Income* " />
 											</div>
 										</div>
 									</div>
@@ -976,76 +1000,76 @@
 												<p>
 													Mother&apos;s Name*
 												</p>
-												<input type="text" name="mother_name" class="form-control" placeholder="Mother&apos;s Name"/>
+												<input type="text" name="mother_name" class="form-control" placeholder="Mother&apos;s Name" />
 											</div>
 											<div class="col">
 												<p>
 													Mobile no*
 												</p>
-												<input type="text" name="mother_contact_number" class="form-control" placeholder="Mother&apos;s Mobile no"/>
+												<input type="text" name="mother_contact_number" class="form-control" placeholder="Mother&apos;s Mobile no" />
 											</div>
 										</div>
-										<br/>
+										<br />
 										<div class="row">
 											<div class="col">
 												<p>
 													Email*
 												</p>
-												<input type="text" name="mother_email" class="form-control" placeholder="Mother&apos;s Email"/>
+												<input type="text" name="mother_email" class="form-control" placeholder="Mother&apos;s Email" />
 											</div>
 											<div class="col">
 												<p>
 													National Id*
 												</p>
-												<input type="text" name="mother_national_id" class="form-control" placeholder="Mother&apos;s NID* "/>
+												<input type="text" name="mother_national_id" class="form-control" placeholder="Mother&apos;s NID* " />
 											</div>
 											<div class="col">
 												<p>
 													Pasport No.*
 												</p>
-												<input type="text" name="mother_passport" class="form-control" placeholder="Mother&apos;s Pasport No.* "/>
+												<input type="text" name="mother_passport" class="form-control" placeholder="Mother&apos;s Pasport No.* " />
 											</div>
 										</div>
-										<br/>
+										<br />
 										<div class="row">
 											<div class="col">
 												<p>
 													Date Of Birth*
 												</p>
-												<input type="date" name="mother_birthday" class="form-control"/>
+												<input type="date" name="mother_birthday" class="form-control" />
 											</div>
 											<div class="col">
 												<p>
 													Age*
 												</p>
-												<input type="text" name="mother_age" class="form-control" placeholder="Mother&apos;s Age* "/>
+												<input type="text" name="mother_age" class="form-control" placeholder="Mother&apos;s Age* " />
 											</div>
 											<div class="col">
 												<p>
 													Occupation*
 												</p>
-												<input type="text" name="mother_occupation" class="form-control" placeholder="Mother&apos;s Occupation* "/>
+												<input type="text" name="mother_occupation" class="form-control" placeholder="Mother&apos;s Occupation* " />
 											</div>
 										</div>
-										<br/>
+										<br />
 										<div class="row">
 											<div class="col">
 												<p>
 													Name Of Company*
 												</p>
-												<input type="text" name="mother_company" class="form-control" placeholder="Mother&apos;s Name Of Company"/>
+												<input type="text" name="mother_company" class="form-control" placeholder="Mother&apos;s Name Of Company" />
 											</div>
 											<div class="col">
 												<p>
 													Designation*
 												</p>
-												<input type="text" name="mother_designation" class="form-control" placeholder="Mother&apos;s Designation* "/>
+												<input type="text" name="mother_designation" class="form-control" placeholder="Mother&apos;s Designation* " />
 											</div>
 											<div class="col">
 												<p>
 													Annual Income*
 												</p>
-												<input type="text" name="mother_annual_income" class="form-control" placeholder="Mother&apos;s Annual Income* "/>
+												<input type="text" name="mother_annual_income" class="form-control" placeholder="Mother&apos;s Annual Income* " />
 											</div>
 										</div>
 									</div>
@@ -1054,97 +1078,97 @@
 									<h3 class="m-5 text-center">
 										Local Guardian&apos;s Information(Nearest Relative Except Father   Mother)
 									</h3>
-									<hr/>
+									<hr />
 									<div class="row">
 										<div class="col">
 											<p>
 												Name*
 											</p>
-											<input type="text" name="local_guardian_name" class="form-control" placeholder="Name"/>
+											<input type="text" name="local_guardian_name" class="form-control" placeholder="Name" />
 										</div>
 										<div class="col">
 											<p>
 												Relationship*
 											</p>
-											<input type="text" name="" class="form-control" placeholder="Relationship"/>
+											<input type="text" name="" class="form-control" placeholder="Relationship" />
 										</div>
 										<div class="col">
 											<p>
 												Mobile No.*
 											</p>
-											<input type="text" name="local_guardian_contact_number" class="form-control" placeholder="Mobile"/>
+											<input type="text" name="local_guardian_contact_number" class="form-control" placeholder="Mobile" />
 										</div>
 									</div>
-									<br/>
+									<br />
 									<div class="row">
 										<div class="col">
 											<p>
 												Email*
 											</p>
-											<input type="text" name="local_guardian_email" class="form-control" placeholder="Email"/>
+											<input type="text" name="local_guardian_email" class="form-control" placeholder="Email" />
 										</div>
 										<div class="col">
 											<p>
 												National Id*
 											</p>
-											<input type="text" name="local_guardian_national_id" class="form-control" placeholder=" NID* "/>
+											<input type="text" name="local_guardian_national_id" class="form-control" placeholder=" NID* " />
 										</div>
 										<div class="col">
 											<p>
 												Pasport No.*
 											</p>
-											<input type="text" name="local_guardian_passport" class="form-control" placeholder=" Pasport No.* "/>
+											<input type="text" name="local_guardian_passport" class="form-control" placeholder=" Pasport No.* " />
 										</div>
 									</div>
-									<br/>
+									<br />
 									<div class="row">
 										<div class="col">
 											<p>
 												Street/House No*
 											</p>
-											<input type="text" name="local_guardian_street" class="form-control" placeholder="Street1"/>
+											<input type="text" name="local_guardian_street" class="form-control" placeholder="Street1" />
 										</div>
 										<div class="col">
 											<p>
 												Local Guardian Relation*
 											</p>
-											<input type="text" name="local_guardian_relation" class="form-control" placeholder="Street2 "/>
+											<input type="text" name="local_guardian_relation" class="form-control" placeholder="Street2 " />
 										</div>
 									</div>
-									<br/>
+									<br />
 									<div class="row">
 										<div class="col">
 											<p>
 												City*
 											</p>
-											<input type="text" class="form-control" placeholder="City"/>
+											<input type="text" class="form-control" placeholder="City" />
 										</div>
 										<div class="col">
 											<p>
 												State/Divission*
 											</p>
-											<input type="text" class="form-control" placeholder="State/Divission"/>
+											<input type="text" class="form-control" placeholder="State/Divission" />
 										</div>
 										<div class="col">
 											<p>
 												Zip code/Post Code*
 											</p>
-											<input type="text" class="form-control" placeholder="Zip code/Post Code.* "/>
+											<input type="text" class="form-control" placeholder="Zip code/Post Code.* " />
 										</div>
 										<div class="col">
 											<p>
 												Country*
 											</p>
-											<input type="text" class="form-control" placeholder="Country* "/>
+											<input type="text" class="form-control" placeholder="Country* " />
 										</div>
 									</div>
-									<br/>
+									<br />
 									<h3 class="m-5 text-center">
 										Information of the person (within 35 to 65 years old) who will bear your educational
 										expenses
 										(Applicable for Guardian Group Life Insurance)
 									</h3>
-									<hr/>
+									<hr />
 									<div class="row">
 										<div class="col form-control">
 											<p>
@@ -1166,28 +1190,28 @@
 											<p>
 												Address*
 											</p>
-											<input type="text" class="form-control" placeholder="Address"/>
+											<input type="text" class="form-control" placeholder="Address" />
 										</div>
 									</div>
-									<br/>
+									<br />
 									<div class="row">
 										<div class="col">
 											<p>
 												Name*
 											</p>
-											<input type="text" class="form-control" placeholder="Gurdian name"/>
+											<input type="text" class="form-control" placeholder="Gurdian name" />
 										</div>
 										<div class="col">
 											<p>
 												Relationship*
 											</p>
-											<input type="text" class="form-control" placeholder="Relationship "/>
+											<input type="text" class="form-control" placeholder="Relationship " />
 										</div>
 										<div class="col">
 											<p>
 												Mobile No*
 											</p>
-											<input type="text" class="form-control" placeholder="Mobile No "/>
+											<input type="text" class="form-control" placeholder="Mobile No " />
 										</div>
 									</div>
 									<div class="row">
@@ -1195,62 +1219,62 @@
 											<p>
 												National Id*
 											</p>
-											<input type="text" class="form-control" placeholder="NID* "/>
+											<input type="text" class="form-control" placeholder="NID* " />
 										</div>
 										<div class="col">
 											<p>
 												Pasport No.*
 											</p>
-											<input type="text" class="form-control" placeholder=" Pasport No.* "/>
+											<input type="text" class="form-control" placeholder=" Pasport No.* " />
 										</div>
 										<div class="col">
 											<p>
 												Date Of Birth*
 											</p>
-											<input type="date" class="form-control"/>
+											<input type="date" class="form-control" />
 										</div>
 										<div>
 											<p>
 												Age
 											</p>
-											<input type="text" class="form-control" placeholder="Age"/>
+											<input type="text" class="form-control" placeholder="Age" />
 										</div>
 									</div>
-									<br/>
+									<br />
 									<div class="row">
 										<div class="col">
 											<p>
 												Occupation*
 											</p>
-											<input type="text" class="form-control" placeholder="Occupation"/>
+											<input type="text" class="form-control" placeholder="Occupation" />
 										</div>
 										<div class="col">
 											<p>
 												Designation*
 											</p>
-											<input type="text" class="form-control" placeholder="Designation "/>
+											<input type="text" class="form-control" placeholder="Designation " />
 										</div>
 										<div class="col">
 											<p>
 												Employers Name*
 											</p>
-											<input type="text" class="form-control" placeholder="Employers Name "/>
+											<input type="text" class="form-control" placeholder="Employers Name " />
 										</div>
 									</div>
 									<h4 class="mt-5 mb-3">
 										National ID Attachment
 									</h4>
-									<input class="" type="file" name="" id=""/>
-									<br/>
+									<input class="" type="file" name="" id="" />
+									<br />
 									<strong>
 										File must be in jpg/jpeg/png format. File size not more then 1 MB
 									</strong>
-									<br/>
-									<br/>
+									<br />
+									<br />
 									<h3 class="mt-5 text-center">
 										Student Group Life Insurance Information (Nominee for the Students Insurance)
 									</h3>
-									<hr/>
+									<hr />
 									<p>
 										Select Nominee
 									</p>
@@ -1265,8 +1289,8 @@
 											Others
 										</option>
 									</select>
-									<br/>
-									<br/>
+									<br />
+									<br />
 									<button type="button" class="btn btn-outline-danger my-5" onclick="prevSection()">
 										Previous
 									</button>
@@ -1276,20 +1300,19 @@
 								</div>
 							</div>
 						</section>
-						
 						<!-- Section 4 -->
 						<section id="section4">
 							<div class="container-fluid p-3 bg-light">
 								<h2>
 									Educational Information
 								</h2>
-								<hr/>
+								<hr />
 								<div class="row ">
 									<div class="col m-5 bg-white p-3">
 										<h2>
 											SSC/Equivalent
 										</h2>
-										<hr/>
+										<hr />
 										<div class="row px-3">
 											<p>
 												Board*
@@ -1339,40 +1362,40 @@
 												</option>
 											</select>
 										</div>
-										<br/>
+										<br />
 										<div class="row px-3">
 											<p>
 												Roll no*
 											</p>
-											<input type="text" name="roll_number_ssc" class="form-control" placeholder="Roll no"/>
+											<input type="text" name="roll_number_ssc" class="form-control" placeholder="Roll no" />
 										</div>
-										<br/>
+										<br />
 										<div class="row px-3">
 											<p>
 												Passing Year*
 											</p>
-											<input type="date" name="year_ssc" class="form-control"/>
+											<input type="date" name="year_ssc" class="form-control" />
 										</div>
-										<br/>
+										<br />
 										<div class="row px-3">
 											<p>
 												GPA*
 											</p>
-											<input type="text" name="ssc_gpa" class="form-control" placeholder="...."/>
+											<input type="text" name="ssc_gpa" class="form-control" placeholder="...." />
 										</div>
-										<br/>
+										<br />
 										<div class="row px-3">
 											<p>
-												<input type="checkbox" name="is_golden_ssc" value="1"/>
+												<input type="checkbox" name="is_golden_ssc" value="1" />
 												Is Golden In SSC
 											</p>
 										</div>
-										<br/>
+										<br />
 										<div class="row px-3">
 											<p>
 												SSC Academic Transcript
 											</p>
-											<input class="form-control" name="ssc_certificate" type="file" id=""/>
+											<input class="form-control" name="ssc_certificate" type="file" id="" />
 											<strong>
 												Upload in PDF format with merge all Transcript/Marks Sheet in single file. File size not more then 1
 												MB
@@ -1383,7 +1406,7 @@
 										<h2>
 											HSC/Equivalent
 										</h2>
-										<hr/>
+										<hr />
 										<div class="row px-3">
 											<p>
 												Board*
@@ -1433,40 +1456,40 @@
 												</option>
 											</select>
 										</div>
-										<br/>
+										<br />
 										<div class="row px-3">
 											<p>
 												Roll no*
 											</p>
-											<input type="text" name="roll_number_hsc" class="form-control" placeholder="Roll no"/>
+											<input type="text" name="roll_number_hsc" class="form-control" placeholder="Roll no" />
 										</div>
-										<br/>
+										<br />
 										<div class="row px-3">
 											<p>
 												Passing Year*
 											</p>
-											<input type="date" name="year_hsc" class="form-control"/>
+											<input type="date" name="year_hsc" class="form-control" />
 										</div>
-										<br/>
+										<br />
 										<div class="row px-3">
 											<p>
 												GPA*
 											</p>
-											<input type="text" name="hsc_gpa" class="form-control" placeholder="...."/>
+											<input type="text" name="hsc_gpa" class="form-control" placeholder="...." />
 										</div>
-										<br/>
+										<br />
 										<div class="row px-3">
 											<p>
-												<input type="checkbox" name="is_golden_hsc" value="1"/>
+												<input type="checkbox" name="is_golden_hsc" value="1" />
 												Is Golden In HSC
 											</p>
 										</div>
-										<br/>
+										<br />
 										<div class="row px-3">
 											<p>
 												HSC Academic Transcript
 											</p>
-											<input class="form-control" type="file" name="hsc_certificate" id=""/>
+											<input class="form-control" type="file" name="hsc_certificate" id="" />
 											<strong>
 												Upload in PDF format with merge all Transcript/Marks Sheet in single file. File size not more then 1
 												MB
@@ -1474,12 +1497,12 @@
 										</div>
 									</div>
 								</div>
-								<br/>
+								<br />
 								<div class="container">
 									<h3 class="mt-5 text-center">
 										Credit Transfer
 									</h3>
-									<hr/>
+									<hr />
 									<p>
 										Do You Want Credit Transfer
 									</p>
@@ -1494,11 +1517,11 @@
 											No
 										</option>
 									</select>
-									<br/>
+									<br />
 									<h3 class="mt-5 text-center">
 										Merit Scholarship, Academic Achievements or Awards (if any)
 									</h3>
-									<hr/>
+									<hr />
 									<p>
 										Do You have any Merit Scholarship, Academic Achievements or Awards
 									</p>
@@ -1513,11 +1536,11 @@
 											No
 										</option>
 									</select>
-									<br/>
+									<br />
 									<h3 class="mt-5 text-center">
 										Professional Experience (if any)
 									</h3>
-									<hr/>
+									<hr />
 									<p>
 										Do You have any Professional Experience
 									</p>
@@ -1541,37 +1564,36 @@
 								</div>
 							</div>
 						</section>
-						
 						<!-- Section 5 -->
 						<section id="section5">
 							<div class="container p-3 bg-light">
 								<h4 class="text-center">
 									How do you know Daffodil International University(DIU)? Please Select at least one box.
 								</h4>
-								<hr/>
+								<hr />
 								<div class="row">
 									<div class="col">
-										<input type="checkbox" name="know_the_diu_from_website" value="1"/>
+										<input type="checkbox" name="know_the_diu_from_website" value="1" />
 										<label for="myCheckbox">
 											DIU Website
 										</label>
 									</div>
 									<div class="col">
-										<input type="checkbox" name="know_the_diu_from_newspaper" value="1"/>
+										<input type="checkbox" name="know_the_diu_from_newspaper" value="1" />
 										<label for="myCheckbox">
 											Newspaper
 											Advertisement
 										</label>
 									</div>
 									<div class="col">
-										<input type="checkbox" name="know_the_diu_from_social_media" value="1"/>
+										<input type="checkbox" name="know_the_diu_from_social_media" value="1" />
 										<label for="myCheckbox">
 											Social
 											Media
 										</label>
 									</div>
 									<div class="col">
-										<input type="checkbox" name="know_the_diu_from_daffodil_family" value="1"/>
+										<input type="checkbox" name="know_the_diu_from_daffodil_family" value="1" />
 										<label for="myCheckbox">
 											Daffodil
 											Family
@@ -1580,56 +1602,56 @@
 								</div>
 								<div class="row">
 									<div class="col">
-										<input type="checkbox" name="know_the_diu_from_sms" value="1"/>
+										<input type="checkbox" name="know_the_diu_from_sms" value="1" />
 										<label for="myCheckbox">
 											SMS
 										</label>
 									</div>
 									<div class="col">
-										<input type="checkbox" name="know_the_diu_from_diu_student" value="1"/>
+										<input type="checkbox" name="know_the_diu_from_diu_student" value="1" />
 										<label for="myCheckbox">
 											DIU Students
 										</label>
 									</div>
 									<div class="col">
 										<form>
-											<input type="checkbox" onclick="diu_emp_click()" name="know_the_diu_from_diu_employee" id="diu_emp" value="diu_emp"/>
+											<input type="checkbox" onclick="diu_emp_click()" name="know_the_diu_from_diu_employee" id="diu_emp" value="diu_emp" />
 											<label for="myCheckbox">
 												DIU Employee
 											</label>
 										</form>
 									</div>
 									<div class="col">
-										<input type="checkbox" name="know_the_diu_from_others" value="1"/>
+										<input type="checkbox" name="know_the_diu_from_others" value="1" />
 										<label for="myCheckbox">
 											Others
 										</label>
 									</div>
 								</div>
-								<br/>
+								<br />
 								<h5>
 									Please fill up Follwing Field Fields.
 								</h5>
-								<hr/>
+								<hr />
 								<div class="row">
 									<div class="col">
 										<div class="row">
 											<p>
 												Sister Concerns:
 											</p>
-											<input type="text" class="form-control" placeholder="*****"/>
+											<input type="text" class="form-control" placeholder="*****" />
 										</div>
 										<div class="row">
 											<p>
 												Student ID :
 											</p>
-											<input type="text" class="form-control" placeholder="*****"/>
+											<input type="text" class="form-control" placeholder="*****" />
 										</div>
 										<div class="row d-none" id="emp_id">
 											<p>
 												Employee ID :
 											</p>
-											<input type="text" class="form-control" placeholder="*****"/>
+											<input type="text" class="form-control" placeholder="*****" />
 										</div>
 									</div>
 									<div class="col">
@@ -1637,67 +1659,67 @@
 											<p>
 												Others Details
 											</p>
-											<input type="text" class="form-control" placeholder="*****"/>
+											<input type="text" class="form-control" placeholder="*****" />
 										</div>
 										<div class="row">
 											<p>
 												Student Name :
 											</p>
-											<input type="text" class="form-control" placeholder="*****"/>
+											<input type="text" class="form-control" placeholder="*****" />
 										</div>
 										<div class="row d-none" id="emp_name">
 											<p>
 												Employee Name :
 											</p>
-											<input type="text" class="form-control" placeholder="*****"/>
+											<input type="text" class="form-control" placeholder="*****" />
 										</div>
 									</div>
 								</div>
 								<h4 class="mt-5 text-center">
 									Please tick (✔) the following box if applicable:
 								</h4>
-								<hr/>
+								<hr />
 								<div class="row">
 									<div class="col">
-										<input type="checkbox" name="is_parents_freedom_fighter" value="1"/>
+										<input type="checkbox" name="is_parents_freedom_fighter" value="1" />
 										<label for="myCheckbox">
 											If your parents
 											is freedom fighter
 										</label>
 									</div>
 									<div class="col">
-										<input type="checkbox" name="is_tribal" value="1"/>
+										<input type="checkbox" name="is_tribal" value="1" />
 										<label for="myCheckbox">
 											If You are a
 											tribal
 										</label>
 									</div>
 									<div class="col">
-										<input type="checkbox" name="is_physical_disorder" value="1"/>
+										<input type="checkbox" name="is_physical_disorder" value="1" />
 										<label for="myCheckbox">
 											If You are a
 											physical disorder
 										</label>
 									</div>
 									<div class="col">
-										<input type="checkbox" name="is_first_division_player" value="1"/>
+										<input type="checkbox" name="is_first_division_player" value="1" />
 										<label for="myCheckbox">
 											If you are a
 											first division player
 										</label>
 									</div>
 								</div>
-								<br/>
-								<input type="checkbox" name="myCheckbox" value="1"/>
+								<br />
+								<input type="checkbox" name="myCheckbox" value="1" />
 								<label for="myCheckbox">
 									I declare that the information
 									provided by me in this system is true and correct to the best of my knowledge.
 								</label>
-								<br/>
+								<br />
 								<button type="button" class="btn btn-outline-danger my-5" onclick="prevSection()">
 									Previous
 								</button>
-								<input type="submit" value="Submit" class="btn btn-primary"/>
+								<input type="submit" value="Submit" class="btn btn-primary" />
 							</div>
 						</section>
 					</form>

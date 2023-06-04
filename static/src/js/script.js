@@ -3,6 +3,7 @@ function nextSection() {
   var currentSection = document.querySelector(
     'section[style*="display: block"]'
   );
+  let application_type = $('#applicant_type_id').val();
   let program_type = $('#program_type_id').val();
   let application_numb = $('#application_numb').val();
   let program = $('#program_id').val();
@@ -14,6 +15,9 @@ function nextSection() {
 
 
   if (currentSection.getAttribute("id") === "section1") {
+    if (application_type == '') {
+      $('#applicant_type_error').text('Please fill out this field');
+    }
     if (program_type == '') {
       $('#program_type_error').text('Please fill out this field');
     }
@@ -27,6 +31,7 @@ function nextSection() {
     }
 
     if (program_type != '' && program != '' && application_numb != '') {
+      $('#applicant_type_error').text('');
 
       $('#program_type_error').text('');
 
@@ -40,6 +45,8 @@ function nextSection() {
     } else {
 
       if (program_type != '') {
+        
+        $('#applicant_type_error').text('');
         $('#program_type_error').text('');
       }
       if (application_numb != '') {
