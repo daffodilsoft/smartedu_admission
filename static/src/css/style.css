@@ -1,20 +1,21 @@
 .color1 {
-  background-color: lightblue;
+  background-color: rgba(178, 219, 233, 0.432);
 }
 
 .color2 {
-  background-color: rgb(194, 225, 177);
+  background-color: #d5caec57;
 }
 
 .color3 {
-  background-color: rgb(194, 225, 177);
+  background-color: #d5caec57;
 }
 
 .color4 {
-  background-color: rgb(194, 225, 177);
+  background-color: #d5caec57;
 }
+
 .color5 {
-  background-color: rgb(194, 225, 177);
+  background-color: #d5caec57;
 }
 
 .minus_margin {
@@ -43,9 +44,24 @@ section {
   display: grid;
   grid-template-columns: auto auto auto auto auto;
   margin: auto;
-  gap: 2rem;
-  width: 75%;
+  gap: 1rem;
+  width: 70%;
+  background-color: rgba(255, 255, 255, 0.575);
+  padding: 1rem;
+  margin-bottom: 1rem;
 }
+
+.custom_picture_box {
+  display: block;
+  margin-left: 30%;
+  margin-right: 0%;
+  width: 109px;
+  height: 113px;
+  border: 1px solid #000;
+  border-radius: 4px;
+  padding: 5px;
+}
+
 
 @media (min-width: 576px) {
   .step {
@@ -73,15 +89,15 @@ section {
 
 @media only screen and (max-width: 576px) {
   .main_container {
-    width: 85%;
+    width: 80%;
     display: flex;
   }
 
-  #step1 > h6,
-  #step2 > h6,
-  #step3 > h6,
-  #step4 > h6,
-  #step5 > h6 {
+  #step1>h6,
+  #step2>h6,
+  #step3>h6,
+  #step4>h6,
+  #step5>h6 {
     font-size: 10px;
     display: flex;
     flex-direction: column;
@@ -93,22 +109,21 @@ section {
   .height {
     height: 6vh;
   }
+
   .minus_margin {
     margin: auto -1.5rem;
   }
 }
 
-.custom_picture_box {
-  display: block;
-  margin-left: 30%;
-  margin-right: 0%;
-  width: 109px;
-  height: 113px;
-  border: 1px solid #000;
-  border-radius: 4px;
-  padding: 5px;
-}
+@media (max-width: 768px) {
 
-.form-group {
-  margin-bottom: 5px;
+  /* Adjust table layout for small screens */
+  .table-responsive {
+    overflow-x: auto;
+  }
+
+  th,
+  td {
+    white-space: nowrap;
+  }
 }
