@@ -828,18 +828,29 @@
 
             </field>
         </record>
+
+        <!-- Graph View -->
+        <record id="se_application_graph_view" model="ir.ui.view">
+            <field name="name">se.application.graph.view</field>
+            <field name="model">se.application</field>
+            <field name="arch" type="xml">                
+                <graph string="Activity Analysis" sample="1" type="bar" stacked="True">
+                    <field name="admission_date" interval="day"/>
+                    <field name="session_id"/>
+                </graph>                
+            </field>
+        </record>
+
+
         <!-- Main window action for "model" -->
         <record id="se_application_action" model="ir.actions.act_window">
             <field name="name">Application</field>
             <field name="res_model">se.application</field>
-            <field name="view_mode">tree,form</field>
+            <field name="view_mode">tree,form,graph</field>
             <field name="view_id" ref="se_application_tree_view"/>
             <field name="help" type="html">
                 <p class="oe_view_nocontent_create">
                     Click to add new application
-                </p>
-                <p>
-
                 </p>
             </field>
         </record>

@@ -2,45 +2,67 @@
     <data>
         <!--This Menu Item must have a parent and an action -->
         <menuitem id="se_admission_root"
-                  name="Admission"/>
+            name="Admission" />
 
-        <!--Admission Menu-->
+        <!--Admission
+        Menu-->
         <menuitem id="se_admission_menu_admission"
-                  name="Admission"
-                  parent="se_admission_root"/>
+            name="Admission"
+            parent="se_admission_root" />
 
-        <!--Admission Menu-->
-
+        <!--Admission
+        Menu-->
         <menuitem id="se_admission_submenu_admission_session"
-                  name="Admission Session"
-                  parent="se_admission_menu_admission"
-                  action="se_admission_session_action_view"/>
+            name="Admission Session"
+            parent="se_admission_menu_admission"
+            action="se_admission_session_action_view" />
 
         <menuitem id="se_admission_submenu_application"
-                  name="Application"
-                  parent="se_admission_menu_admission"
-                  action="se_application_action"/>
+            name="Application"
+            parent="se_admission_menu_admission"
+            action="se_application_action" />
 
-        <!--Admission Configuration Menu-->
+        <!--Admission
+        Configuration Menu-->
         <menuitem id="se_admission_menu_configuration"
-                  name="Configuration"
-                  parent="se_admission_root"/>
+            name="Configuration"
+            parent="se_admission_root" />
 
-        <!--Program Type Menu-->
+        <menuitem id="se_admission_menu_configuration_form_fee"
+            name="Admission Form Fee"
+            action="se_admission_fee_action_view"
+            parent="se_admission_menu_configuration" />
+
+        <!--Program
+        Type Menu-->
         <menuitem id="se_admission_menu_configuration_program_type"
-                  name="Program Type"
-                  parent="se_admission_menu_configuration"
-                  action="se_program_type_action_view"/>
+            name="Program Type"
+            parent="se_admission_menu_configuration"
+            action="se_program_type_action_view" />
 
-         <!--General Management-->
+        <!--General
+        Management-->
         <menuitem id="se_admission_menu_configuration_general_management"
-                  name="General Management"
-                  parent="se_admission_menu_configuration"/>
+            name="General Management"
+            parent="se_admission_menu_configuration" />
 
-        <!--Semester Management-->
+        <!--Semester
+        Management-->
         <menuitem id="se_admission_menu_configuration_semester_management"
-                  name="Semester Management"
-                  parent="se_admission_menu_configuration"/>
+            name="Semester Management"
+            parent="se_admission_menu_configuration" />
+
+        <!--Semester
+        Management Submenu-->
+        <menuitem name="Semester"
+            id="se_admission_sub_menu_semester"
+            action="smartedu_semester.se_semester_action_view"
+            parent="smartedu_admission.se_admission_menu_configuration_semester_management" />
+
+        <menuitem name="Semester Type"
+            id="se_admission_sub_menu_semester_type"
+            action="smartedu_semester.se_semester_type_action_view"
+            parent="smartedu_admission.se_admission_menu_configuration_semester_management" />
 
     </data>
 </odoo>

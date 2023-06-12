@@ -1,0 +1,13 @@
+<odoo>
+    <template id="asset_dashboard" name="Dashboard Asset" inherit_id="web.assets_backend">
+        <xpath expr="." position="inside">
+            <script type="text/javascript" src="/smartedu_admission/static/src/js/custom_graph_view.js"/>
+        </xpath>
+    </template>
+
+    <template id="custom_graph_view_template" inherit_id="web.graph_view">
+        <xpath expr="//graph" position="attributes">
+            <attribute name="js_class">smartedu_admission.static/src/js/custom_graph_view.CustomGraphView</attribute>
+        </xpath>
+    </template>
+</odoo>
