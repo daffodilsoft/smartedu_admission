@@ -194,11 +194,11 @@
 									</div>
 									<div class="col-4 d-none" id="vanish_field">
 										<p>
-											Last Completed Degree
+											Last Degree
 										</p>
 										<select id="semester" name="last_completed_degree" class="form-select">
 											<option value="">
-												Select Last Completed Degree*
+												Select Last Completed Degree
 											</option>
 											<option value="hsc">
 												HSC
@@ -210,8 +210,7 @@
 												Diploma
 											</option>
 										</select>
-										<span class="text-danger" id="">
-										</span>
+										
 									</div>
 								</div>
 								<div class="row m-5">
